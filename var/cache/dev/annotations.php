@@ -61,6 +61,22 @@ return [[
 '%5B%5BC%5DSymfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%23addLink%5D%5B1%5D' => 2,
 '%5BSymfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%24container%5D%5B1%5D' => 1,
 '%5B%5BC%5DSymfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%24container%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CAdmin%5CAdminBaseController%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CController%5CAdmin%5CAdminBaseController%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CAdmin%5CAdminBaseController%23renderDefault%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CController%5CAdmin%5CAdminBaseController%23renderDefault%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CAdmin%5CAdminHomeController%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CController%5CAdmin%5CAdminHomeController%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CAdmin%5CAdminHomeController%23index%5D%5B1%5D' => 3,
+'%5B%5BC%5DApp%5CController%5CAdmin%5CAdminHomeController%23index%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CMain%5CBaseController%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CController%5CMain%5CBaseController%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CMain%5CBaseController%23renderDefault%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CController%5CMain%5CBaseController%23renderDefault%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CMain%5CHomeController%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CController%5CMain%5CHomeController%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CMain%5CHomeController%23index%5D%5B1%5D' => 4,
+'%5B%5BC%5DApp%5CController%5CMain%5CHomeController%23index%5D%5B1%5D' => 2,
 '%5BDoctrine%5CBundle%5CDoctrineBundle%5CController%5CProfilerController%5D%5B1%5D' => 1,
 '%5B%5BC%5DDoctrine%5CBundle%5CDoctrineBundle%5CController%5CProfilerController%5D%5B1%5D' => 2,
 '%5BDoctrine%5CBundle%5CDoctrineBundle%5CController%5CProfilerController%23setContainer%5D%5B1%5D' => 1,
@@ -602,6 +618,50 @@ return [[
 
 0 => 'N;',
 1 => [],
-2 => 1619084056,
+2 => 1619104281,
+3 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/admin',
+                ],
+                'name' => [
+                    'admin_home',
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+4 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/',
+                ],
+                'name' => [
+                    'home',
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
 
 ]];
