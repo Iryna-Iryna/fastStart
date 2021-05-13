@@ -1,0 +1,63 @@
+{% extends 'main/base.html.twig' %}
+{% block title %} Profile {% endblock %}
+{% block body %}
+
+
+    <div id="first-container" class="container-fluid">
+        <div class="row no-gutters" >
+            <div class="col-12 col-lg-6 col-md-6">
+                <h1 class="display-4">
+                    Profile
+                </h1>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container-fluid">
+        <a class="btn btn-success" href="{{ path('create_campaign') }}">Create Campaign</a>
+    </div>
+        <div class="card bg-light mb-3 mt-3">
+            <div class="card-body">
+
+            <table class="table">
+                <tr>
+                    <th>Campaign</th>
+                    <th>Categories</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+
+                {% for campaign in campaignlist %}
+                <tr>
+                    <td>{{ campaign.name }}</td>
+                    <td>{{ campaign.categories }}</td>
+                    <td>
+                        <form action="delete/campaign/{{ campaign.id }}" method="POST">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="edit/campaign/{{ campaign.id }}" method="POST">
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                        </form>
+                    </td>
+              </tr>               
+                </tr>
+                {% endfor %}
+
+            </table>
+            
+
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

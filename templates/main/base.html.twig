@@ -6,14 +6,33 @@
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/main/css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/framework/bootstrap-4/css/bootstrap.min.css') }}">
         {% endblock %}
 
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+            <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" 
+                crossorigin="anonymous"></script>
+            <script src="{{ asset('assets/framework/bootstrap-4/js/bootstrap.min.js') }}"></script>
         {% endblock %}
     </head>
+
     <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a id="brand-name" href="{{ path('home') }}" class="navbar-brand">Fast Start</a>
+                {% if app.user.username is defined and app.user.username is not null %}
+                    <a id="login-block" class="nav-link" href="{{ path('user_profile') }}">{{ app.user.name }}</a>
+                    <a id="login-block" class="nav-link" href="{{ path('user_logout') }}">Logout</a>
+                {% else %}  
+                    <a id="login-block" class="nav-link" href="{{ path('user_login') }}">Login</a>
+                    <a id="login-block" class="nav-link" href="{{ path('registration') }}">Register</a>  
+                {% endif %}
+            </div>
+        </nav>
+
+
         {% block body %}{% endblock %}
     </body>
 </html>

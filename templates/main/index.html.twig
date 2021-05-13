@@ -1,6 +1,42 @@
 {% extends 'main/base.html.twig' %}
+{% block title %} Home {% endblock %}
 {% block body %}
-    <h1>
-        {{ title }}
-    </h1>
+
+
+    <div id="first-container" class="container-fluid">
+        <div class="row no-gutters" >
+            <div class="col-12 col-lg-6 col-md-6">
+                <h1 class="display-4">
+                    Home
+                </h1>
+            </div>
+        </div>
+    </div>
+    {% if campaignlist is defined and campaignlist is not null %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                {% for campaign in campaignlist %}
+                    <div class="card" id="card-campaign">
+                        <h5 class="card-header">{{ campaign.name }}</h5>
+                        <div class="card-body">
+                            <p class="card-text">{{ campaign.description }}</p>
+                            <small style="color: grey;">By {{ campaign.user.name }}</small> </br>
+                            <a href="show/campaign/{{ campaign.id }}" class="btn btn-success">Go to campaing!</a>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6 col-md-6">
+                    <h3>No campaign</h3>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
 {% endblock %}
