@@ -17,45 +17,45 @@
 
 
     <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="container-fluid">
-        <a class="btn btn-success" href="{{ path('create_campaign') }}">Create Campaign</a>
-    </div>
-        <div class="card bg-light mb-3 mt-3">
-            <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <a class="btn btn-success" href="{{ path('create_campaign') }}">Create Campaign</a>
+                </div>
 
-            <table class="table">
-                <tr>
-                    <th>Campaign</th>
-                    <th>Categories</th>
-                    <th>Delete</th>
-                    <th>Edit</th>
-                </tr>
+                <div class="card bg-light mb-3 mt-3">
+                    <div class="card-body">
 
-                {% for campaign in campaignlist %}
-                <tr>
-                    <td>{{ campaign.name }}</td>
-                    <td>{{ campaign.categories }}</td>
-                    <td>
-                        <form action="delete/campaign/{{ campaign.id }}" method="POST">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="edit/campaign/{{ campaign.id }}" method="POST">
-                            <button type="submit" class="btn btn-primary">Edit</button>
-                        </form>
-                    </td>
-              </tr>               
-                </tr>
-                {% endfor %}
+                    <table class="table">
+                        <tr>
+                            <th>Campaign</th>
+                            <th>Categories</th>
+                            <th>Delete</th>
+                            <th>Edit</th>
+                        </tr>
 
-            </table>
-            
+                        {% for campaign in campaignlist %}
+                        <tr>
+                            <td>{{ campaign.name }}</td>
+                            <td>{{ campaign.categories }}</td>
+                            <td>
+                                <form action="delete/campaign/{{ campaign.id }}" method="POST">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="edit/campaign/{{ campaign.id }}" method="POST">
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </form>
+                            </td>
+                        </tr>               
+                        {% endfor %}
 
-            </div>
-        </div>
+                    </table>
+                    
+
+                    </div>
+                </div>
         </div>
     </div>
     </div>
