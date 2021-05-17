@@ -20,7 +20,7 @@ class Campaign
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=20)
      */
     private $name;
 
@@ -28,6 +28,11 @@ class Campaign
      * @ORM\Column(type="text")
      */
     private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $shortDescription;
 
     /**
      * @ORM\Column(type="string", length=10)
@@ -44,6 +49,7 @@ class Campaign
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
 
     public function __construct()
     {
@@ -67,6 +73,16 @@ class Campaign
         return $this;
     }
 
+    public function getShortDescription(): ?string{
+        return $this->shortDescription;
+    }
+
+    public function setShortDescription(string $shortDescription): self{
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
     public function getDescription(): ?string{
         return $this->description;
     }
@@ -84,6 +100,18 @@ class Campaign
     public function setCategories(string $categories) {
         $this->categories = $categories;
         
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
         return $this;
     }
 
@@ -113,18 +141,6 @@ class Campaign
                 $comment->setCampaign(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
 
         return $this;
     }

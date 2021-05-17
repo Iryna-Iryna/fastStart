@@ -41,6 +41,7 @@ class CampaignController extends AbstractController{
     public function editCampaign(Request $request, $id){
         $campaign = $this->getDoctrine()->getRepository(Campaign::class)->find($id);
         $campaign->setName($campaign->getName());
+        $campaign->setShortDescription($campaign->getShortDescription());
         $campaign->setDescription($campaign->getDescription());
         $form = $this->createForm(CampaignType::class, $campaign);
         $form->handleRequest($request);
@@ -79,7 +80,7 @@ class CampaignController extends AbstractController{
      * @Route("/show/campaign/{id}", name="show_campaign")
      */
     public function showCompaing(Request $request, $id){
-        
+        $user = $this->getUser();
         $campaign = $this->getDoctrine()->getRepository(Campaign::class)->find($id);
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -87,9 +88,11 @@ class CampaignController extends AbstractController{
 
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setCampaign($campaign);
+            $comment->setUser($user);
             $em = $this->getDoctrine()->getManager();            
             $em->persist($comment);
             $em->persist($campaign);
+            $em->persist($user);
             $em->flush();
             return $this->redirectToRoute('home');
         }
@@ -99,7 +102,8 @@ class CampaignController extends AbstractController{
         return $this->render('main/show_campaign.html.twig', [
             'campaign' => $campaign,
             'form' => $form->createView(),
-            'commentlist' => $commentlist
+            'commentlist' => $commentlist,
+            'user' => $user
         ]);
     }
 

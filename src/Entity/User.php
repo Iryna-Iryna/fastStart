@@ -47,11 +47,24 @@ class User implements UserInterface
     private $campaign;
 
     /**
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user"))
+     */
+    private $comment;
+
+    /**
      * @return Collection|Campaign[]
      */
     public function getCampaign(): Collection
     {
         return $this->campaign;
+    }
+    
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComment(): Collection
+    {
+        return $this->comment;
     }
 
     public function getId(): ?int

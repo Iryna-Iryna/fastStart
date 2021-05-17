@@ -12,20 +12,22 @@
             </div>
         </div>
     </div>
+
     {% if campaignlist is defined and campaignlist is not null %}
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                {% for campaign in campaignlist %}
-                    <div class="card" id="card-campaign">
-                        <h5 class="card-header">{{ campaign.name }}</h5>
-                        <div class="card-body">
-                            <p class="card-text">{{ campaign.description }}</p>
-                            <small style="color: grey;">By {{ campaign.user.name }}</small> </br>
-                            <a href="show/campaign/{{ campaign.id }}" class="btn btn-success">Go to campaing!</a>
+                    {% for campaign in campaignlist %}
+                        <div class="card" id="card-campaign">
+                            <h5 class="card-header">{{ campaign.name }}</h5>
+                            <div class="card-body">
+                                <h6 class="card-text">{{ campaign.categories }}</h6>
+                                <p class="card-text">{{ campaign.shortDescription }}</p>
+                                <small style="color: grey;">By {{ campaign.user.name }}</small> </br>
+                                <a style="margin-top:1%;" href="show/campaign/{{ campaign.id }}" class="btn btn-success">Go to campaing!</a>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -38,5 +40,7 @@
             </div>
         </div>
     {% endif %}
-
+<div id="pagination" class="container-fluid">
+    {{ knp_pagination_render(campaignlist) }}
+</div>
 {% endblock %}

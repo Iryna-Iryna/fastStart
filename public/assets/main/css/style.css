@@ -17,3 +17,22 @@
     text-align:right;
     padding: 1rem 0;
 }
+#pagination{
+    display:flex;
+    justify-content: center;
+
+}
+.pagination span{
+    margin:10%;
+}
+#text-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#text-info a{
+    color: #0c5460;
+    margin-left: 1%;
+    text-decoration: underline;
+    font-size: 1rem;
+}

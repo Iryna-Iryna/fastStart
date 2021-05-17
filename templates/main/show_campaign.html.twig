@@ -3,13 +3,9 @@
 {% block body %}
 
     <div id="first-container" class="container-fluid">
-        <div class="row" >
-            <div class="col-12 col-lg-6 col-md-6">
                 <h1>
                     {{ campaign.name }} 
                 </h1>
-            </div>
-        </div>
     </div>
 
     <div class="container">
@@ -20,6 +16,18 @@
         </div>
     </div>
 
+    <div id="first-container" class="container-fluid">
+        <div class="row" >
+            <div class="col-12 col-lg-6 col-md-6">
+                <h3>
+                    Comments:
+                </h3>
+            </div>
+        </div>
+    </div>
+
+{% if app.user.username is defined and app.user.username is not null %}
+    <div class="container">
         {% if form is defined %}
             {{ form_start(form) }}
                 <div class="form_group">
@@ -36,11 +44,26 @@
             {{ form_end(form) }}
         {% endif %}
 
+        {% if commentlist is not null %}
+            {% for comment in commentlist %}
+                <div class="alert alert-dark" role="alert">
+                    <div class="col-md-12 mb-3">
+                        <h6>{{ comment.user.name }}</h6></br>
+                        <p>{{ comment.text }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %} 
+            <div class="alert alert-dark" role="alert">
+                <h5> No comment</h5>
+            </div>
+        {% endif %} 
+    </div>
+{% else %} 
+    <div id="text-info" class="alert alert-dark" role="alert">
+        <h5> Please login to write and watch comments</h5>
+        <a href="{{ path('user_login') }}">Login</a>
+    </div>
+{% endif %} 
 
-    {% for comment in commentlist %}
-        <div class="col-md-12 mb-3">
-            <p class="card-text">{{ comment.text }}</p>
-        </div>
-    {% endfor %}
-    
 {% endblock %}

@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Campaign;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\AbstractType;
@@ -28,7 +29,10 @@ class CampaignType extends AbstractType
                     'Music' => 'Music'
                 ]
             ))
-            ->add('description', TextType::class, array(
+            ->add('shortDescription', TextType::class, array(
+                'label' => 'Enter short description:'
+            ))           
+            ->add('description', TextareaType::class, array(
                 'label' => 'Enter description:'
             ));
     }
